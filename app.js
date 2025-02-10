@@ -15,6 +15,11 @@ for (currency in countryList) {
   toDropdown.append(toOption);
 }
 
+fromFlag.setAttribute("src", `https://flagsapi.com/US/flat/64.png`);
+toFlag.setAttribute("src", `https://flagsapi.com/IN/flat/64.png`);
+fromDropdown.value = "USD";
+toDropdown.value = "INR";
+
 fromDropdown.addEventListener("change", () => {
   fromFlag.setAttribute(
     "src",
@@ -27,11 +32,6 @@ toDropdown.addEventListener("change", () => {
     `https://flagsapi.com/${countryList[toDropdown.value]}/flat/64.png`
   );
 });
-
-fromFlag.setAttribute("src", `https://flagsapi.com/US/flat/64.png`);
-toFlag.setAttribute("src", `https://flagsapi.com/IN/flat/64.png`);
-fromDropdown.value = "USD";
-toDropdown.value = "INR";
 
 let convertCurrency = (event) => {
   event.preventDefault();
@@ -55,7 +55,7 @@ let convertCurrency = (event) => {
         console.log(`result=${result}`);
         document.querySelector(
           ".msg"
-        ).innerHTML = `${amt} ${fromCurrency} = ${result} ${toCurrency}`;
+        ).innerText = `${amt} ${fromCurrency} = ${result} ${toCurrency}`;
       });
   }
 };
